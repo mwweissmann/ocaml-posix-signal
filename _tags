@@ -1,0 +1,42 @@
+# OASIS_START
+# DO NOT EDIT (digest: f9366c3cbd0e286c7ef837fe7b400ffc)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library posix-signal
+"src/posix-signal.cmxs": use_posix-signal
+<src/*.ml{,i,y}>: oasis_library_posix_signal_ccopt
+"src/signal.c": oasis_library_posix_signal_ccopt
+<src/posix-signal.{cma,cmxa}>: oasis_library_posix_signal_cclib
+"src/libposix-signal_stubs.lib": oasis_library_posix_signal_cclib
+"src/dllposix-signal_stubs.dll": oasis_library_posix_signal_cclib
+"src/libposix-signal_stubs.a": oasis_library_posix_signal_cclib
+"src/dllposix-signal_stubs.so": oasis_library_posix_signal_cclib
+<src/posix-signal.{cma,cmxa}>: use_libposix-signal_stubs
+<src/*.ml{,i,y}>: pkg_posix-time
+<src/*.ml{,i,y}>: pkg_result
+<src/*.ml{,i,y}>: pkg_unix
+"src/signal.c": pkg_posix-time
+"src/signal.c": pkg_result
+"src/signal.c": pkg_unix
+# Executable test
+<test/test.{native,byte}>: pkg_posix-time
+<test/test.{native,byte}>: pkg_result
+<test/test.{native,byte}>: pkg_unix
+<test/test.{native,byte}>: use_posix-signal
+<test/*.ml{,i,y}>: pkg_posix-time
+<test/*.ml{,i,y}>: pkg_result
+<test/*.ml{,i,y}>: pkg_unix
+<test/*.ml{,i,y}>: use_posix-signal
+# OASIS_STOP

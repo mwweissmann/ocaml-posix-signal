@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: 57ac672443903eb9a34bdabb0357f989)
+version = "0.3.0"
+description = "POSIX signal functions"
+requires = "result posix-time unix"
+archive(byte) = "posix-signal.cma"
+archive(byte, plugin) = "posix-signal.cma"
+archive(native) = "posix-signal.cmxa"
+archive(native, plugin) = "posix-signal.cmxs"
+exists_if = "posix-signal.cma"
+# OASIS_STOP
+

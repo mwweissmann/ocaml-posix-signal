@@ -1,0 +1,38 @@
+OASISFormat: 0.4
+Name:        posix-signal
+Version:     0.3.0
+Synopsis:    POSIX signal functions
+Authors:     Markus W. Weissmann <markus.weissmann@in.tum.de>
+Maintainers: Markus W. Weissmann <markus.weissmann@in.tum.de>
+Homepage:    https://github.com/mwweissmann/ocaml-posix-signal/
+License:     MIT
+Plugins:     META (0.4)
+
+Library "posix-signal"
+  Path:                 src/
+  BuildTools:           ocamlbuild
+  Modules:              Posix_signal
+  CSources:             signal.c
+  CCLib:                -lrt
+  CCOpt:                -O2 -Wall -Wextra -Wno-unused-parameter
+  BuildDepends:         result, unix
+
+Document "api"
+  Title:                API reference for POSIX signal
+  Type:                 ocamlbuild (0.4)
+  Install:              false
+  BuildTools:           ocamlbuild, ocamldoc
+  Format:               HTML
+  Index:                index.html
+  XOCamlbuildPath:      src/
+  XOCamlbuildLibraries: posix-signal
+
+Executable "test"
+  Path:                 test/
+  MainIs:               test.ml
+  BuildDepends:         posix-signal
+  CompiledObject:       best
+  BuildTools:           ocamlbuild
+  Install:              false
+  Build:                true
+
